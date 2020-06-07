@@ -8,13 +8,13 @@ public class EnemiesSpawner : MonoBehaviour
     [SerializeField] private Transform[] _points;
     private Vector2 _enemyPos;
     private int _number;
-    private bool _courChecker = true;
+    private bool _coroutineChecker = true;
 
     private void Update()
     {
-        if(_courChecker == true)
+        if(_coroutineChecker == true)
             StartCoroutine(SpawnIn());
-        _courChecker = false;
+        _coroutineChecker = false;
     }
 
     private IEnumerator SpawnIn()
@@ -23,7 +23,7 @@ public class EnemiesSpawner : MonoBehaviour
         RandomPos();
         Instantiate(_enemyPrefab, _enemyPos, Quaternion.identity);
         yield return waitforsec;
-        _courChecker = true;
+        _coroutineChecker = true;
     }
     private void RandomPos()
     {
